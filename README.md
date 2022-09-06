@@ -12,5 +12,6 @@ The application was built using:
 * Programmatic UI
 
 # Video 🎥
-Uploading...
+
+![simulator](https://user-images.githubusercontent.com/42741527/188723124-f608ea84-7df1-4386-93fe-16e6afa25de2.gif)
 
