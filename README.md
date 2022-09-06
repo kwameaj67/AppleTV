@@ -11,7 +11,10 @@ The application was built using:
 * Swift
 * Programmatic UI
 
-# Video 🎥
+# Screenshots 📸
+<img align='left' src="Assets.xcassets/app1.imageset/app1.png"  width="250"/>
+<img src="Assets.xcassets/app2.imageset/app2.png"  width="250"/>
 
-![simulator](https://user-images.githubusercontent.com/42741527/188723124-f608ea84-7df1-4386-93fe-16e6afa25de2.gif)
 
+<img align='left' src="Assets.xcassets/app3.imageset/app3.png"  width="250">
+<img src="Assets.xcassets/app4.imageset/app4.png"  width="250">
