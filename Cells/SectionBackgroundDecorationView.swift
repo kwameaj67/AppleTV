@@ -22,8 +22,6 @@ class SectionBackgroundDecorationView: UICollectionReusableView {
         
         gradientLayer.shouldRasterize = true
         
-//        self.backgroundColor = .blue
-        
         self.layer.addSublayer(gradientLayer)
         
 
