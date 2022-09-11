@@ -12,9 +12,9 @@ The application was built using:
 * Programmatic UI
 
 # Screenshots 📸
-<img align='left' src="Assets.xcassets/app1.imageset/app1.png"  width="250"/>
-<img src="Assets.xcassets/app2.imageset/app2.png"  width="250"/>
+<img align='left' src="Assets.xcassets/one.imageset/one.png"  width="250"/>
+<img src="Assets.xcassets/two.imageset/two.png"  width="250"/>
 
 
-<img align='left' src="Assets.xcassets/app3.imageset/app3.png"  width="250">
-<img src="Assets.xcassets/app4.imageset/app4.png"  width="250">
+<img align='left' src="Assets.xcassets/three.imageset/three.png"  width="250">
+<img src="Assets.xcassets/four.imageset/four.png"  width="250">
