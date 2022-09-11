@@ -23,12 +23,8 @@ class SubscriptionCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: Properties -
-    let movieView : UIView = {
-        var iv = UIView()
-//        let backgroundImage = UIImageView(image: UIImage(named: "wallpaper")?.withRenderingMode(.alwaysOriginal))
-//        backgroundImage.contentMode = .scaleAspectFit
-//        iv.backgroundColor = UIColor(patternImage: image!)
-//        iv.insertSubview(backgroundImage, at: 0)
+    let movieImage : UIImageView = {
+        var iv = UIImageView()
         iv.backgroundColor = .black.withAlphaComponent(0.8)
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
@@ -71,23 +67,26 @@ class SubscriptionCollectionViewCell: UICollectionViewCell {
     }()
     
     func setupViews(){
-        addSubview(movieView)
-        movieView.addSubview(stackView)
+        addSubview(movieImage)
+        movieImage.addSubview(stackView)
         [infoLabel,buyButton,exploreLabel].forEach {
             stackView.addArrangedSubview($0)
         }
     }
+    func setup(for item: MovieSubscription){
+        movieImage.image = UIImage(named: "\(item.image)")?.withRenderingMode(.alwaysOriginal)
+    }
     func setupConstraints(){
         NSLayoutConstraint.activate([
             
-            movieView.topAnchor.constraint(equalTo: topAnchor),
-            movieView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            movieView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            movieView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            movieImage.topAnchor.constraint(equalTo: topAnchor),
+            movieImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            movieImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            movieImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            stackView.bottomAnchor.constraint(equalTo: movieView.bottomAnchor,constant: -30),
-            stackView.leadingAnchor.constraint(equalTo: movieView.leadingAnchor,constant: 30),
-            stackView.trailingAnchor.constraint(equalTo: movieView.trailingAnchor,constant: -30),
+            stackView.bottomAnchor.constraint(equalTo: movieImage.bottomAnchor,constant: -30),
+            stackView.leadingAnchor.constraint(equalTo: movieImage.leadingAnchor,constant: 30),
+            stackView.trailingAnchor.constraint(equalTo: movieImage.trailingAnchor,constant: -30),
             
             
             buyButton.heightAnchor.constraint(equalToConstant: 56),

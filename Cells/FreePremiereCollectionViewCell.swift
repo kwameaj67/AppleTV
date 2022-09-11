@@ -25,7 +25,7 @@ class FreePremiereCollectionViewCell: UICollectionViewCell {
     let movieImage : UIImageView = {
         var iv = UIImageView()
         iv.backgroundColor = .black.withAlphaComponent(0.8)
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 10
@@ -63,6 +63,12 @@ class FreePremiereCollectionViewCell: UICollectionViewCell {
         [movieImage,moveInfoLabel,movieTitleLabel,movieDescLabel].forEach { item in
             addSubview(item)
         }
+    }
+    func setup(for item: FreePremiere){
+        movieImage.image = UIImage(named: "\(item.image)")?.withRenderingMode(.alwaysOriginal)
+        movieDescLabel.text = item.desc
+        movieTitleLabel.text = item.title
+        moveInfoLabel.text = item.info
     }
     func setupConstraints(){
         NSLayoutConstraint.activate([

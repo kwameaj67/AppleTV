@@ -25,7 +25,7 @@ class KidsFamilyCollectionViewCell: UICollectionViewCell {
     let movieImage : UIImageView = {
         var iv = UIImageView()
         iv.backgroundColor = .black.withAlphaComponent(0.8)
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 10
@@ -57,6 +57,10 @@ class KidsFamilyCollectionViewCell: UICollectionViewCell {
         [movieImage,movieNumberLabel,movieDetailsLabel,border].forEach {
             addSubview($0)
         }
+    }
+    func setup(for item: TopKids){
+        movieImage.image = UIImage(named: "\(item.image)")?.withRenderingMode(.alwaysOriginal)
+        movieDetailsLabel.attributedText = setAttributedText(item.title, item.details)
     }
     func setupConstraints(){
         

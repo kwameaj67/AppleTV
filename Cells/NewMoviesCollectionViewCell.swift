@@ -25,7 +25,7 @@ class NewMoviesCollectionViewCell: UICollectionViewCell {
     let movieImage : UIImageView = {
         var iv = UIImageView()
         iv.backgroundColor = .black.withAlphaComponent(0.8)
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 10
@@ -44,7 +44,9 @@ class NewMoviesCollectionViewCell: UICollectionViewCell {
     func setupViews(){
         addSubview(movieImage)
     }
-    
+    func setup(for item: NewMovie){
+        movieImage.image = UIImage(named: "\(item.image)")?.withRenderingMode(.alwaysOriginal)
+    }
     func setupConstraints(){
         
         NSLayoutConstraint.activate([

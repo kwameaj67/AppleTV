@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class PopularMoviesCollectionViewCell: UICollectionViewCell {
     
     static let reusableID = "PopularMoviesCell"
@@ -22,12 +23,14 @@ class PopularMoviesCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties -
     
-    let imageView: UIView = {
-        let cv = UIView(frame: .zero)
-        cv.backgroundColor = .black.withAlphaComponent(0.8)
-        cv.layer.cornerRadius = 10
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
+    let imageView: UIImageView = {
+        let iv = UIImageView(frame: .zero)
+        iv.backgroundColor = .black.withAlphaComponent(0.8)
+        iv.layer.cornerRadius = 10
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
     }()
     
     let statusLabel: UILabel = {
@@ -43,6 +46,9 @@ class PopularMoviesCollectionViewCell: UICollectionViewCell {
         addSubview(imageView)
         imageView.addSubview(statusLabel)
     }
+    func setup(for item: PopularMovie){
+        imageView.image = UIImage(named: "\(item.image)")?.withRenderingMode(.alwaysOriginal)
+    }
     func setupConstraints(){
         
         NSLayoutConstraint.activate([
@@ -55,4 +61,6 @@ class PopularMoviesCollectionViewCell: UICollectionViewCell {
             statusLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -15),
         ])
     }
+    
+    
 }
