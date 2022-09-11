@@ -10,6 +10,13 @@ import UIKit
 class StoreVC: UIViewController {
     let cellId = "cellID"
 
+    let topMoviesList = TopMovie.topMoviesData
+    let topKidsList = TopKids.topKidsData
+    let freePremiereList = FreePremiere.freePremiereData
+    let popularMoviesList = PopularMovie.popularMovieData
+    let newMoviesList = NewMovie.newMovieData
+    let channelList = MovieChannel.channelData
+    let subscriptionList = MovieSubscription.subscriptionData
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
