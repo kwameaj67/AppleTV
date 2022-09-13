@@ -17,6 +17,7 @@ class StoreVC: UIViewController {
     let newMoviesList = NewMovie.newMovieData
     let channelList = MovieChannel.channelData
     let subscriptionList = MovieSubscription.subscriptionData
+    private var layoutCategory = ["popularMovies","topMovies", "newMovies", "kidsMovies", "freePremiere", "channels", "subscription"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -50,7 +51,9 @@ class StoreVC: UIViewController {
     }
     private func setupCompositionalLayout() {
         let layout = UICollectionViewCompositionalLayout { sectionNum, env in
-            if sectionNum == 0 {
+          
+            switch self.layoutCategory[sectionNum]{
+            case "popularMovies":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(500)), subitems: [item])
@@ -63,7 +66,7 @@ class StoreVC: UIViewController {
                 let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: SectionBackgroundDecorationView.reusableId)
                 section.decorationItems = [sectionBackground]
                 return section
-            }else if sectionNum == 1 {
+            case "topMovies":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                 item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
                 let innerRowGroup = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/3)), subitems: [item])
@@ -82,7 +85,7 @@ class StoreVC: UIViewController {
                 let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: SectionBackgroundDecorationView.reusableId)
                 section.decorationItems = [sectionBackground]
                 return section
-            }else if sectionNum == 2 {
+            case "newMovies":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                 
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(190), heightDimension: .absolute(100)), subitems: [item])
@@ -99,7 +102,7 @@ class StoreVC: UIViewController {
                 let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: SectionBackgroundDecorationView.reusableId)
                 section.decorationItems = [sectionBackground]
                 return section
-            }else if sectionNum == 3 {
+            case "kidsMovies":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                 item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
                 let innerRowGroup = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/3)), subitems: [item])
@@ -118,8 +121,7 @@ class StoreVC: UIViewController {
                 let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: SectionBackgroundDecorationView.reusableId)
                 section.decorationItems = [sectionBackground]
                 return section
-            }
-            else if sectionNum == 4 {
+            case "freePremiere":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                 
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(270), heightDimension: .absolute(270)), subitems: [item])
@@ -136,23 +138,23 @@ class StoreVC: UIViewController {
                 let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: SectionBackgroundDecorationView.reusableId)
                 section.decorationItems = [sectionBackground]
                 return section
-            }
-            else if sectionNum == 5 {
+            case "channels":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
 
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(100), heightDimension: .absolute(120)), subitems: [item])
 
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 15
-                section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+                section.contentInsets = .init(top: 10, leading: 20, bottom: 0, trailing: 20)
                 section.orthogonalScrollingBehavior = .continuous
 
                 section.boundarySupplementaryItems = [
                     .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: HeaderSectionCollectionReusableView.reusableId, alignment: .top)
                 ]
+                let sectionBackground = NSCollectionLayoutDecorationItem.background(elementKind: SectionBackgroundDecorationView.reusableId)
+                section.decorationItems = [sectionBackground]
                 return section
-            }
-            else if sectionNum == 6 {
+            case "subscription":
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(500)))
                 
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(500)), subitems: [item])
@@ -161,8 +163,7 @@ class StoreVC: UIViewController {
                 section.contentInsets = .init(top: 0, leading: 0, bottom: 20, trailing: 0)
                 section.orthogonalScrollingBehavior = .groupPagingCentered
                 return section
-            }
-            else {
+            default:
                 let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(170), heightDimension: .absolute(50)), subitems: [item])

@@ -11,14 +11,14 @@ struct MovieSubscription {
     var image: String
     
     static let subscriptionData = [
-        MovieSubscription(image: "movie2"),
+        MovieSubscription(image: "movie3"),
         MovieSubscription(image: "movie9"),
         MovieSubscription(image: "movie8"),
         MovieSubscription(image: "movie5"),
         MovieSubscription(image: "movie4"),
         MovieSubscription(image: "movie1"),
-        MovieSubscription(image: "movie2"),
         MovieSubscription(image: "movie10"),
+        MovieSubscription(image: "movie2"),
         MovieSubscription(image: "samaritan"),
         MovieSubscription(image: "movie3"),
     ]
