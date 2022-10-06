@@ -1,5 +1,5 @@
 # AppleTV-Clone
-An implementation of complex layout of Apple TV using UICompositional layout in swift
+An implementation of the complex layout of Apple TV using UICompositional layout in swift
 
 ### Note ⚙️
 The application was built using: 
